@@ -8,3 +8,5 @@ If you are a guru with a programming language not listed here, then we would
 really appreciate your push request of an example snippet in your programming
 language.
 
+Please issue a bug report on the right side, if you find any problems or bugs
+in our examples.
