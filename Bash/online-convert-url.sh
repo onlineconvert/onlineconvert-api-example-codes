@@ -115,7 +115,7 @@ read -r -d '' opts << EOM
 </queue>"
 EOM
 
-echo "> Inserting convertion job into queue at online-convert.com..."
+echo "> Requesting token from online-convert.com..."
 return=$( eval ${curl} ${opts} ${apiurl}/request-token )
 errorcode=$( echo ${return} | sed "s#.*<code>\([0-9]*\)</code>.*#\1#" )
 
