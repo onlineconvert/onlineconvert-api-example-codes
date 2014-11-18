@@ -120,17 +120,15 @@ return=$( eval ${curl} ${opts} ${apiurl}/request-token )
 errorcode=$( echo ${return} | sed "s#.*<code>\([0-9]*\)</code>.*#\1#" )
 
 if [[ $errorcode -ne 400 ]]; then
-    echo "Something went wrong!"
-    echo "Here's the response given from the online-convert.com:"
-    echo ""
-    echo "${return}"
-    exit
+    errorMessage "Something went wrong!\nHere's the response given from the online-convert.com:\n\n${return}"
 fi
 
 token=$( echo ${return} | sed "s#.*<token>\([0-9a-z]*\)</token>.*#\1#" )
 echo "> Token successfully received: ${token}"
+
 server=$( echo ${return} | sed "s#.*<server>\([^<]*\)</server>.*#\1#" )
 echo "> Server successfully received: ${server}"
+
 domain=$( echo ${server} | awk -F/ '{print $3}' )
 
 echo "> Building XML data string for sending job request to online-convert.com..."
@@ -151,11 +149,7 @@ return=$( eval ${curl} ${opts} ${server}/queue-insert )
 errorcode=$( echo ${return} | sed "s#.*<code>\([0-9]*\)</code>.*#\1#" )
 
 if [[ $errorcode -gt 0 ]]; then
-    echo "Something went wrong!"
-    echo "Here's the response given from the online-convert.com:"
-    echo ""
-    echo "${return}"
-    exit
+    errorMessage "Something went wrong!\nHere's the response given from the online-convert.com:\n\n${return}"
 fi
 
 hash=$( echo ${return} | sed "s#.*<hash>\([0-9a-z]*\)</hash>.*#\1#" )
