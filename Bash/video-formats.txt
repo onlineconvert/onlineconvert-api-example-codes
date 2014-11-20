@@ -1,0 +1,10 @@
+Available codecs for video convertation:
+    msmpeg
+    dx50
+    xvid
+
+Available mirror directions for video convertation:
+    0 : no mirroring
+    1 : Flip horizontally
+    2 : Flip vertically
+

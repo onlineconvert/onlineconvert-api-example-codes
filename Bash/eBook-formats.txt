@@ -1,0 +1,67 @@
+Available eBook-Formats for switch "-f":
+    0 : default
+    1 : Kindle
+    2 : Kindle DX
+    3 : Sony
+    4 : Sony 300
+    5 : Sony 900
+    6 : MS Reader
+    7 : Mobipocket
+    8 : Hanlin V3
+    9 : Hanlin V5
+    10 : Cybook 3
+    11 : Cybook Opus
+    12 : iLiad
+    13 : IrexDR1000
+    14 : jetBook
+    15 : Nook
+    16 : Apple iPad
+    17 : IrexDR800
+    18 : Kobo
+    19 : Nook color
+    20 : Tablet
+    22 : Bambook
+    23 : Kindle Fire
+    24 : Generic e-ink
+    25 : Generic e-ink, large
+    26 : Pocketbook 900
+    27 : Galaxy
+
+
+Available input encodings:
+    0 : auto detect
+    1 : ASCII
+    2 : Cp1250 (Windows Eastern European)
+    3 : Cp1251 (Windows Cyrillic)
+    4 : Cp1252 (Windows Latin-1)
+    5 : Cp1253 (Windows Greek)
+    6 : Cp1254 (Windows Turkish)
+    7 : Cp1257 (Windows Baltic)
+    8 : ISO8859_1 (Latin Alphabet No. 1)
+    9 : ISO8859_2 (Latin Alphabet No. 2)
+    10 : ISO8859_4 (Latin Alphabet No. 4)
+    11 : ISO8859_5 (Latin/Cyrillic Alphabet)
+    12 : ISO8859_7 (Latin/Greek Alphabet)
+    13 : ISO8859_9 (Latin Alphabet No. 9)
+    14 : ISO8859_13 (Latin Alphabet No. 13)
+    15 : ISO8859_15 (Latin Alphabet No. 15)
+    16 : KOI8_R (Russian)
+    17 : UTF8
+    18 : UTF-16
+    19 : EUC_JP (Japanese)
+    20 : SJIS (Shift-JIS, Japanese)
+    21 : ISO2022JP (ISO 2022, Japanese)
+    22 : GBK (Simplified Chinese)
+    23 : ISCII91 (encoding of Indic scripts)
+    24 : Big5 (Traditional Chinese)
+    25 : TIS620 (Thai)
+    26 : GB2312 (Simplified Chinese)
+    27 : ISO-2022-KR (Korean)
+
+Available font styles to embed:
+    0 : None
+    1 : Generic sans
+    2 : Generic serif
+
+
+

@@ -1,0 +1,13 @@
+Available color modifications for image convertation:
+    1 : Don't convert colors of the target JPG image
+    2 : Convert image to gray color JPG image
+    3 : Convert image to a black and white JPG image
+    4 : Invert the colors in the JPG image
+    5 : Make image look like from the year 1980
+    6 : Convert image to a brownish JPG image like from the 18th century
+
+
+
+
+
+
