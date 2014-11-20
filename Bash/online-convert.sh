@@ -235,7 +235,7 @@ echo "> Server successfully received: ${server}"
 domain=$( echo ${server} | awk -F/ '{print $3}' )
 
 echo "> Building XML data string for sending job request to online-convert.com..."
-xml="<?xml version=\"1.0\" encoding=\"utf-8\"?><queue>"
+xml="\\<?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?><queue>"
 if [[ "${token}" != "" ]]; then
     xml="${xml}<token>${token}</token>"
 fi
@@ -256,6 +256,90 @@ fi
 if [[ "${val_U}" != "" ]]; then
     xml="${xml}<sourceUrl>${val_U}</sourceUrl>"
 fi
+
+xml="${xml}<format>"
+if [[ "${type}" = "audio" ]]; then
+    if [[ "${val_b}" != "" ]]; then
+        xml="${xml}<bitrate>${val_b}</bitrate>"
+    fi
+    if [[ "${val_q}" != "" ]]; then
+        xml="${xml}<frequency>${val_q}</frequency>"
+    fi
+    if [[ "${val_c}" != "" ]]; then
+        xml="${xml}<channel>${val_c}</channel>"
+    fi
+    if [[ "${val_s}" != "" ]]; then
+        xml="${xml}<audio_start>${val_s}</audio_start>"
+    fi
+    if [[ "${val_e}" != "" ]]; then
+        xml="${xml}<audio_end>${val_e}</audio_end>"
+    fi
+elif [[ "${type}" = "document" ]]; then
+    if [[ "${isset_o}" = "true" ]]; then
+        xml="${xml}<ocr>true</ocr>"
+    fi
+    if [[ "${val_l}" != "" ]]; then
+        xml="${xml}<source_lang>${val_l}</source_lang>"
+    fi
+elif [[ "${type}" = "ebook" ]]; then
+    if [[ "${val_f}" != "" ]]; then
+        xml="${xml}<target_format>${val_f}</target_format>"
+    fi
+    if [[ "${val_t}" != "" ]]; then
+        xml="${xml}<title>${val_t}</title>"
+    fi
+    if [[ "${val_a}" != "" ]]; then
+        xml="${xml}<author>${val_a}</author>"
+    fi
+    if [[ "${val_m}" != "" ]]; then
+        xml="${xml}<border>${val_m}</border>"
+    fi
+    if [[ "${isset_p}" = "true" ]]; then
+        xml="${xml}<asciiize>true</asciiize>"
+    fi
+    if [[ "${val_i}" != "" ]]; then
+        xml="${xml}<input_encoding>${val_i}</input_encoding>"
+    fi
+    if [[ "${val_j}" != "" ]]; then
+        xml="${xml}<embed_font>${val_j}</embed_font>"
+    fi
+elif [[ "${type}" = "image" ]]; then
+    if [[ "${val_W}" != "" ]]; then
+        xml="${xml}<width>${val_W}</width>"
+    fi
+    if [[ "${val_H}" != "" ]]; then
+        xml="${xml}<height>${val_H}</height>"
+    fi
+    if [[ "${val_d}" != "" ]]; then
+        xml="${xml}<dpi>${val_d}</dpi>"
+    fi
+    if [[ "${val_q}" != "" ]]; then
+        xml="${xml}<quality>${val_q}</quality>"
+    fi
+    if [[ "${val_C}" != "" ]]; then
+        xml="${xml}<color>${val_C}</color>"
+    fi
+    if [[ "${isset_E}" = "true" ]]; then
+        xml="${xml}<equalize>1</equalize>"
+    fi
+    if [[ "${isset_Y}" = "true" ]]; then
+        xml="${xml}<normalize>1</normalize>"
+    fi
+    if [[ "${isset_X}" = "true" ]]; then
+        xml="${xml}<enhance>1</enhance>"
+    fi
+    if [[ "${isset_S}" = "true" ]]; then
+        xml="${xml}<sharpen>1</sharpen>"
+    fi
+    if [[ "${isset_L}" = "true" ]]; then
+        xml="${xml}<antialias>1</antialias>"
+    fi
+    if [[ "${isset_D}" = "true" ]]; then
+        xml="${xml}<despeckle>1</despeckle>"
+    fi
+fi
+
+xml="${xml}</format>"
 xml="${xml}</queue>"
 
 
@@ -274,6 +358,11 @@ elif [[ "${val_F}" != "" ]]; then
     optstest=$( echo "${xml}" | sed ':a;N;$!ba;s/\n//g' )
     filedata='-s -X POST -F "queue='${optstest}'" -F "file=@'${val_F}'"'
     echo "> Inserting convertion job into queue on ${domain}..."
+
+
+echo "${curl} ${filedata} ${server}/queue-insert"
+
+
     return=$( eval ${curl} ${filedata} ${server}/queue-insert )
     errorcode=$( echo ${return} | sed "s#.*<code>\([0-9]*\)</code>.*#\1#" )
     if [[ $errorcode -gt 0 ]]; then
