@@ -27,9 +27,10 @@ function displayHelp () {
     echo ""
     echo "Usage: ${0} [OPTIONS]"
     echo ""
-    echo "At least one of following options are mandatory:"
+    echo "One of following options are mandatory, and only one:"
     echo "  -F <path>    Use a local file for convertation."
     echo "  -U <url>     Use a URL for convertation."
+    echo "  -B <hash>    Use a Hash string for convertation."
     echo "  -h           Show this help screen."
     echo ""
     echo "The following options must always be set:"
@@ -137,11 +138,12 @@ if [[ "${curl}" = "" ]]; then
     errorMessage "You must have cURL installed for this script to work!"
 fi
 
-options=":F:U:hA:T:M:N:Zb:q:c:s:e:ol:f:t:a:m:pi:j:W:H:d:C:ENXSLDy:x:r:"
+options=":F:U:B:hA:T:M:N:Zb:q:c:s:e:ol:f:t:a:m:pi:j:W:H:d:C:ENXSLDy:x:r:"
 while getopts "${options}" option; do
   case $option in
     F)   isset_F=true;  val_F="${OPTARG}";;
     U)   isset_U=true;  val_U="${OPTARG}";;
+    B)   isset_B=true;  val_B="${OPTARG}";;
     A)   isset_A=true;  val_A="${OPTARG}";;
     T)   isset_T=true;  val_T="${OPTARG}";;
     M)   isset_M=true;  val_M="${OPTARG}";;
@@ -337,11 +339,57 @@ elif [[ "${type}" = "image" ]]; then
     if [[ "${isset_D}" = "true" ]]; then
         xml="${xml}<despeckle>1</despeckle>"
     fi
+elif [[ "${type}" = "video" ]]; then
+    if [[ "${val_W}" != "" ]]; then
+        xml="${xml}<width>${val_W}</width>"
+    fi
+    if [[ "${val_y}" != "" ]]; then
+        xml="${xml}<v_quality>${val_y}</v_quality>"
+    fi
+    if [[ "${val_x}" != "" ]]; then
+        xml="${xml}<a_quality>${val_x}</a_quality>"
+    fi
+    if [[ "${val_f}" != "" ]]; then
+        xml="${xml}<framerate>${val_f}</framerate>"
+    fi
+    if [[ "${val_r}" != "" ]]; then
+        xml="${xml}<rotate>${val_r}</rotate>"
+    fi
+    if [[ "${val_m}" != "" ]]; then
+        xml="${xml}<mirror>${val_m}</mirror>"
+    fi
+    if [[ "${val_c}" != "" ]]; then
+        xml="${xml}<codec>${val_c}</codec>"
+    fi
+    if [[ "${val_s}" != "" ]]; then
+        xml="${xml}<audio_start>${val_s}</audio_start>"
+    fi
+    if [[ "${val_e}" != "" ]]; then
+        xml="${xml}<audio_end>${val_e}</audio_end>"
+    fi
 fi
-
 xml="${xml}</format>"
+if [[ "${type}" = "hash" ]]; then
+    xml="\\<?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?><queue>"
+    if [[ "${token}" != "" ]]; then
+        xml="${xml}<token>${token}</token>"
+    fi
+    if [[ "${type}" != "" ]]; then
+        xml="${xml}<targetType>${type}</targetType>"
+    fi
+    if [[ "${method}" != "" ]]; then
+        xml="${xml}<targetMethod>${method}</targetMethod>"
+    fi
+    if [[ "${isset_Z}" = "true" ]]; then
+        xml="${xml}<testMode>true</testMode>"
+    else
+        xml="${xml}<testMode>false</testMode>"
+    fi
+    if [[ "${val_B}" != "" ]]; then
+        xml="${xml}<hash_string>${val_B}</hash_string>"
+    fi
+fi
 xml="${xml}</queue>"
-
 
 if [[ "${val_U}" != "" ]]; then
     # url download
