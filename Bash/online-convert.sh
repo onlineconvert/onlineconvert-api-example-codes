@@ -391,10 +391,10 @@ if [[ "${type}" = "hash" ]]; then
 fi
 xml="${xml}</queue>"
 
-if [[ "${val_U}" != "" ]]; then
+if [ "${val_U}" != "" ] || [ "${val_B}" != "" ]; then
     # url download
     echo "> Inserting convertion job into queue on ${domain}..."
-    return=$( eval ${curl} -s --data-urlencode "queue=${xml}" ${server}/queue-insert )
+    return=$( eval ${curl} -s --data-urlencode \""queue=${xml}"\" ${server}/queue-insert )
     errorcode=$( echo ${return} | sed "s#.*<code>\([0-9]*\)</code>.*#\1#" )
     if [[ $errorcode -gt 0 ]]; then
         errorMessage "Something went wrong!\nHere's the response given from the online-convert.com:\n\n${return}"
