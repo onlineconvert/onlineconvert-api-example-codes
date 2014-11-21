@@ -17,7 +17,7 @@ function displayHelp () {
     echo "#   http://www.online-convert.com                     #"
     echo "#                                                     #"
     echo "#   Author:  Alexander Löhner <a.loehner@qaamgo.com>  #"
-    echo "#   License: MIT                                  #"
+    echo "#   License: MIT                                      #"
     echo "#                                                     #"
     echo "#######################################################"
     echo ""
