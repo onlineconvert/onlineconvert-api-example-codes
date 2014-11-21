@@ -406,11 +406,6 @@ elif [[ "${val_F}" != "" ]]; then
     optstest=$( echo "${xml}" | sed ':a;N;$!ba;s/\n//g' )
     filedata='-s -X POST -F "queue='${optstest}'" -F "file=@'${val_F}'"'
     echo "> Inserting convertion job into queue on ${domain}..."
-
-
-echo "${curl} ${filedata} ${server}/queue-insert"
-
-
     return=$( eval ${curl} ${filedata} ${server}/queue-insert )
     errorcode=$( echo ${return} | sed "s#.*<code>\([0-9]*\)</code>.*#\1#" )
     if [[ $errorcode -gt 0 ]]; then
