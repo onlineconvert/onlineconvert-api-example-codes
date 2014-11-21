@@ -183,8 +183,8 @@ while getopts "${options}" option; do
   esac
 done
 
-if [ ! $isset_F ] && [ ! $isset_U ]; then
-    errorMessage "Either Option -F or -U must be provided! Use -h for Help."
+if [ ! $isset_F ] && [ ! $isset_U ] && [ ! $isset_B ]; then
+    errorMessage "Either Option -F, -U or -B must be provided! Use -h for Help."
 fi
 if [ ! $isset_A ]; then
     source ${HOME}/.online-convert 2>/dev/null
