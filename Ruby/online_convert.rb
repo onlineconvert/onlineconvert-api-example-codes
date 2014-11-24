@@ -142,8 +142,8 @@ class OnlineConvert
       if !File.exist?(source)
         raise "File not found:"+source
       end
-      require 'active_support'
-      source = ActiveSupport::Base64.encode64(open(source) { |io| io.read });
+      require 'base64'
+      source = Base64.encode64(open(source) { |io| io.read });
     end
     
     data={"apiKey"=>@@_api_key,
