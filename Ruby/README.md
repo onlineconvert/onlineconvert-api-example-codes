@@ -8,8 +8,3 @@ Run `sudo gem install activesupport`
 Run `sudo gem install builder`
 
 Run `ruby main.rb`
-
-
-
-
-
