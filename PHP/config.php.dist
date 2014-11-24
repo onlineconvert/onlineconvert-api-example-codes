@@ -1,0 +1,2 @@
+<?php
+define("OC_API_KEY", "YOUR API KEY HERE"); // You can get api key from url https://www.online-convert.com/signup/api
