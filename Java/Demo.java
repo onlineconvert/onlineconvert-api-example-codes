@@ -37,7 +37,7 @@ public class Demo {
 
         OnlineConvert oc = OnlineConvert.create("ENTER YOUR APIKEY HERE", true);
         System.out.println("Inserting job in server...\n\n");
-        System.out.println(oc.convert("convert-to-jpg", OnlineConvert.SOURCE_TYPE_FILE_PATH, filePath , "spjobs.png", null, ""));
+        System.out.println(oc.convert("convert-to-png", OnlineConvert.SOURCE_TYPE_FILE_PATH, filePath , "spjobs.jpg", null, ""));
         System.out.println("\n\nJob Inserted in server...\n\n\n\n");
 
         System.out.println("Getting inserted job status on server...\n\n");
