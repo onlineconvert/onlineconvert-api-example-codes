@@ -12,7 +12,7 @@ namespace Example
     {
         static void Main(String[] args) 
 		{
-            OnlineConvert.OnlineConvert oc = OnlineConvert.OnlineConvert.create("5a85b749d33340f592cbd5d6a3630908",true,"convert-to-png");
+            OnlineConvert.OnlineConvert oc = OnlineConvert.OnlineConvert.create("YOUR API KEY HERE",true,"convert-to-png");
 
 			var a = oc.convert("convert-to-png", "URL", "http://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Colonial_Williamsburg_%283205781804%29.jpg/100px-Colonial_Williamsburg_%283205781804%29.jpg", "a.png");
 			var dica = oc.getXml2Dic(a);
