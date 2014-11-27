@@ -1,11 +1,13 @@
-API Example Code Snippet for Java
-=================================
+API Example Code Snippet for DotNet
+===================================
 
-Run `javac OnlineConvert.java`
+Compile either with monodevelop in Linux or with Visual Studio in Windows.
 
-Add path to "OnlineConvert.jar"  to your system variable "classpath"
+First compile project OnlineConvert, then copy OnlineConvert.dll to
+Example/Example folder. Then compile Example project.
 
-Run `javac Demo.java`
+Run Example.exe
 
-Run `java -jar Demo.jar`
+
+
 
