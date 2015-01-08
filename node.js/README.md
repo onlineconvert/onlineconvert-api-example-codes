@@ -1,6 +1,11 @@
-API Example Code Snippet for Node.js
+Install dependendcy
+================================
+```npm install```
+
+
+How to run example of Node.js
 =================================
 
-just run "node test.js"
+```node test.js```
 
 
