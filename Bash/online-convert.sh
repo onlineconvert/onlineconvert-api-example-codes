@@ -140,7 +140,7 @@ if [[ "${curl}" = "" ]]; then
     errorMessage "You must have cURL installed for this script to work!"
 fi
 
-options=":F:U:B:hA:T:M:N:Zb:q:c:s:e:ol:f:t:a:m:pi:j:W:H:d:C:ENXSLDy:x:r:"
+options=":F:U:B:hA:T:M:N:Zb:q:c:s:e:ol:f:t:a:m:pi:j:W:H:d:w:C:ENXSLDy:x:r:"
 while getopts "${options}" option; do
   case $option in
     F)   isset_F=true;  val_F="${OPTARG}";;
