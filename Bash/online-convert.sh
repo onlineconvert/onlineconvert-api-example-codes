@@ -67,6 +67,7 @@ function displayHelp () {
     echo ""
     echo "For type \"audio\":"
     echo "  -b <bitrate>    Sets the target bitrate."
+    echo "  -d <bit_depth>  Sets the target bit depth."
     echo "  -q <frequency>  Sets the target frequency."
     echo "  -c <channel>    Sets the channel"
     echo "  -s <start>      Sets the start time for the convertation, ie: 00:00:00"
@@ -263,6 +264,9 @@ xml="${xml}<format>"
 if [[ "${type}" = "audio" ]]; then
     if [[ "${val_b}" != "" ]]; then
         xml="${xml}<bitrate>${val_b}</bitrate>"
+    fi
+    if [[ "${val_d}" != "" ]]; then
+        xml="${xml}<bit_depth>${val_d}</bit_depth>"
     fi
     if [[ "${val_q}" != "" ]]; then
         xml="${xml}<frequency>${val_q}</frequency>"
