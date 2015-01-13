@@ -72,6 +72,7 @@ function displayHelp () {
     echo "  -c <channel>    Sets the channel"
     echo "  -s <start>      Sets the start time for the convertation, ie: 00:00:00"
     echo "  -e <end>        Sets the end time for the convertation, ie: 00:00:15"
+    echo "  -w <pcm_format> Only for convert-to-wav, sets the PCM format."
     echo ""
     echo "For type \"document\":"
     echo "  -o              Activates the OCR moe for converting images (or PDF) to"
@@ -156,6 +157,7 @@ while getopts "${options}" option; do
     c)   isset_c=true;  val_c="${OPTARG}";;
     s)   isset_s=true;  val_s="${OPTARG}";;
     e)   isset_e=true;  val_e="${OPTARG}";;
+    w)   isset_w=true;  val_w="${OPTARG}";;
     o)   isset_o=true;;
     l)   isset_l=true;  val_l="${OPTARG}";;
     f)   isset_f=true;  val_f="${OPTARG}";;
@@ -279,6 +281,9 @@ if [[ "${type}" = "audio" ]]; then
     fi
     if [[ "${val_e}" != "" ]]; then
         xml="${xml}<audio_end>${val_e}</audio_end>"
+    fi
+    if [[ "${val_w}" != "" ]]; then
+        xml="${xml}<pcm_format>${val_w}</pcm_format>"
     fi
 elif [[ "${type}" = "document" ]]; then
     if [[ "${isset_o}" = "true" ]]; then
