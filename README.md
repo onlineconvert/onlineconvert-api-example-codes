@@ -1,6 +1,9 @@
 Online-Convert.com API Example Code Snippets
 ============================================
 
+### Note: This are examples for the old, deprecated version 1 of the API of online-convert.com. They are still here for historical reasons. 
+### Please use our new API version 2. You will find an SDK and examples here: https://github.com/onlineconvert
+
 This repository is intended to hold some examples of code snippets in different
 programming languages for use with the API of http://www.online-convert.com.
 
