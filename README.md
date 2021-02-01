@@ -1,3 +1,5 @@
+# This repository is deprecated and archived!
+
 Online-Convert.com API Example Code Snippets
 ============================================
 
